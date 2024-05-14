@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narma Brand - Pashminas Exclusivas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-image: url('/mnt/data/image.png'); /* Ruta de la imagen proporcionada */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 3rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-weight: 300;
+            font-size: 1.5rem;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav a {
+            margin: 0 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #e74c3c;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: #f4f4f4;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .pashmina {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .pashmina-item {
+            width: 30%;
+            margin: 1rem 0;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .pashmina-item img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+        .pashmina-item h3 {
+            margin: 0.5rem 0;
+            font-weight: 400;
+        }
+        .pashmina-price {
+            font-weight: 700;
+            color: #e74c3c;
+            margin-top: 0.5rem;
+        }
+        .pashmina-item .button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            margin: 1rem 0;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s;
+        }
+        .pashmina-item .button:hover {
+            background-color: #c0392b;
+        }
+        .pashmina-item:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .gallery img {
+            width: 48%;
+            margin: 1%;
+        }
+        .testimonials {
+            margin-top: 2rem;
+        }
+        .testimonial-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .testimonial-item:last-child {
+            border-bottom: none;
+        }
+        .testimonial-item p {
+            font-style: italic;
+        }
+        .testimonial-item h4 {
+            margin: 0.5rem 0 0;
+            font-weight: 700;
+        }
+        #cart {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .cart-item {
+            width: 48%;
+            margin: 1% 0;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item h4 {
+            margin: 0;
+        }
+        .cart-item input {
+            width: 50px;
+        }
+        #checkout {
+            margin-top: 2rem;
+            text-align: right;
+        }
+        #checkout .button {
+            padding: 1rem 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Narma Brand</h1>
+        <p>Las mejores pashminas en 30 colores exclusivos</p>
+    </header>
+    <nav>
+        <a href="#home" onclick="openTab(event, 'home')">Inicio</a>
+        <a href="#about" onclick="openTab(event, 'about')">Sobre Nosotros</a>
+        <a href="#shop" onclick="openTab(event, 'shop')">Tienda</a>
+        <a href="#gallery" onclick="openTab(event, 'gallery')">Galería</a>
+        <a href="#testimonials" onclick="openTab(event, 'testimonials')">Testimonios</a>
+        <a href="#contact" onclick="openTab(event, 'contact')">Contacto</a>
+    </nav>
+    <div class="container tab-content" id="home">
+        <h2>Bienvenido a Narma Brand</h2>
+        <p>Explora nuestra colección de pashminas exclusivas disponibles en una amplia variedad de colores. Cada pashmina es una pieza única, hecha con los mejores materiales y artesanía de Nepal.</p>
+    </div>
+    <div class="container tab-content" id="shop">
+        <h2>Nuestra Colección</h2>
+        <div class="pashmina">
+            <div class="pashmina-item">
+                <img src="https://via.placeholder.com/300?text=Pashmina+Azul" alt="Pashmina Azul">
+                <h3>Pashmina Azul</h3>
+                <p class="pashmina-price">$30.00</p>
+                <input type="number" min="1" value="1" id="quantity-azul">
+                <button class="button" onclick="addToCart('Pashmina Azul', 30, document.getElementById('quantity-azul').value)">Añadir al Carrito</button>
+            </div>
+            <div class="pashmina-item">
+                <img src="https://via.placeholder.com/300?text=Pashmina+Roja" alt="Pashmina Roja">
+                <h3>Pashmina Roja</h3>
+                <p class="pashmina-price">$30.00</p>
+                <input type="number" min="1" value="1" id="quantity-roja">
+                <button class="button" onclick="addToCart('Pashmina Roja', 30, document.getElementById('quantity-roja').value)">Añadir al Carrito</button>
+            </div>
+            <div class="pashmina-item">
+                <img src="https://via.placeholder.com/300?text=Pashmina+Verde" alt="Pashmina Verde">
+                <h3>Pashmina Verde</h3>
+                <p class="pashmina-price">$30.00</p>
+                <input type="number" min="1" value="1" id="quantity-verde">
+                <button class="button" onclick="addToCart('Pashmina Verde', 30, document.getElementById('quantity-verde').value)">Añadir al Carrito</button>
+            </div>
+            <!-- Añadir más pashminas aquí -->
+        </div>
+        <div id="cart">
+            <h2>Carrito de Compras</h2>
+            <!-- Items del carrito aparecerán aquí -->
+        </div>
+        <div id="checkout">
+            <button class="button">Proceder al Pago</button>
+        </div>
+    </div>
+    <div class="container tab-content" id="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Narma Brand nació de la pasión de un grupo de jóvenes de Barcelona que, en uno de sus viajes a Nepal, descubrieron la belleza y calidad de las pashminas artesanales. Fascinados por la destreza y dedicación de los artesanos nepaleses, decidieron llevar estas maravillosas prendas a su ciudad natal.</p>
+        <p>Desde entonces, nos hemos comprometido a ofrecer pashminas de la más alta calidad, asegurándonos de que cada pieza cuente una historia y resuene con la tradición y cultura nepalí. Nuestra misión es no solo proporcionar productos de lujo, sino también apoyar a las comunidades de artesanos en Nepal, asegurando prácticas comerciales justas y sostenibles.</p>
+        <p>Cada pashmina es elaborada meticulosamente por artesanos que han perfeccionado sus técnicas durante generaciones. Creemos en el comercio justo y en ofrecer condiciones laborales justas a nuestros artesanos. Además, una parte de nuestras ganancias se reinvierte en las comunidades locales de Nepal para mejorar la calidad de vida y apoyar el desarrollo sostenible.</p>
+        <p>Esperamos que disfrutes de nuestras pashminas tanto como nosotros disfrutamos llevándolas a ti. Cada compra que realizas no solo te brinda una pieza única y hermosa, sino que también apoya a los artesanos y sus comunidades en Nepal.</p>
+    </div>
+    <div class="container tab-content" id="gallery">
+        <h2>Galería</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/500?text=Galeria+1" alt="Galeria 1">
+            <img src="https://via.placeholder.com/500?text=Galeria+2" alt="Galeria 2">
+            <img src="https://via.placeholder.com/500?text=Galeria+3" alt="Galeria 3">
+            <img src="https://via.placeholder.com/500?text=Galeria+4" alt="Galeria 4">
+        </div>
+    </div>
+    <div class="container tab-content" id="testimonials">
+        <h2>Testimonios</h2>
+        <div class="testimonial-item">
+            <p>"Las pashminas de Narma Brand son simplemente exquisitas. La calidad y los colores son increíbles. Recomiendo esta marca a todos mis amigos y familiares."</p>
+            <h4>- María López</h4>
+        </div>
+        <div class="testimonial-item">
+            <p>"Compré varias pashminas para regalar y fueron un éxito total. La atención al detalle y el compromiso con la calidad son evidentes en cada pieza."</p>
+            <h4>- Juan Pérez</h4>
+        </div>
+        <div class="testimonial-item">
+            <p>"Me encanta la historia detrás de Narma Brand. Saber que estoy apoyando a artesanos nepaleses mientras disfruto de productos de alta calidad es muy gratificante."</p>
+            <h4>- Laura García</h4>
+        </div>
+    </div>
+    <div class="container tab-content" id="contact">
+        <h2>Contacto</h2>
+        <p>¿Tienes alguna pregunta? Contáctanos en <a href="mailto:info@narmabrand.com">info@narmabrand.com</a> o síguenos en nuestras redes sociales para estar al día con las últimas novedades y ofertas.</p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Narma Brand. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.querySelectorAll("nav a");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Mostrar la pestaña de inicio por defecto
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("nav a").click();
+        });
+
+        function addToCart(item, price, quantity) {
+            var cart = document.getElementById('cart');
+            var cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = '<h4>' + item + ' x ' + quantity + '</h4><span>$' + (price * quantity) + '</span>';
+            cart.appendChild(cartItem);
+        }
+    </script>
+</body>
+</html>
